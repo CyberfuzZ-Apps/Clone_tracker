@@ -2,11 +2,11 @@ package ru.job4j.pojo;
 
 public class Library {
     public static void main(String[] args) {
-        Book book1 = new Book("Clean code", 567);
-        Book book2 = new Book("HeadFirst JAVA", 689);
-        Book book3 = new Book("Herbert Schildt - Java", 987);
-        Book book4 = new Book("Horstmann C.S. - Core Java", 1200);
-        Book[] library = {book1, book2, book3, book4};
+        Book[] library = new Book[4];
+        library[0] = new Book("Clean code", 567);
+        library[1] = new Book("HeadFirst JAVA", 689);
+        library[2] = new Book("Herbert Schildt - Java", 987);
+        library[3] = new Book("Horstmann C.S. - Core Java", 1200);
         for (int i = 0; i < library.length; i++) {
             System.out.println(library[i].getTitle() + " - "
                     + library[i].getPages() + " pages");
