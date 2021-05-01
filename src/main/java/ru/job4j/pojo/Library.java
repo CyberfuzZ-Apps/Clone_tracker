@@ -6,11 +6,7 @@ public class Library {
         Book book2 = new Book("HeadFirst JAVA", 689);
         Book book3 = new Book("Herbert Schildt - Java", 987);
         Book book4 = new Book("Horstmann C.S. - Core Java", 1200);
-        Book[] library = new Book[4];
-        library[0] = book1;
-        library[1] = book2;
-        library[2] = book3;
-        library[3] = book4;
+        Book[] library = {book1, book2, book3, book4};
         for (int i = 0; i < library.length; i++) {
             System.out.println(library[i].getTitle() + " - "
                     + library[i].getPages() + " pages");
@@ -23,7 +19,7 @@ public class Library {
                     + library[i].getPages() + " pages");
         }
         for (int i = 0; i < library.length; i++) {
-            if (library[i].getTitle().equals("Clean code")) {
+            if ("Clean code".equals(library[i].getTitle())) {
                 System.out.println(library[i].getTitle() + " - "
                         + library[i].getPages() + " pages");
             }
