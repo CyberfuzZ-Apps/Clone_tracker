@@ -9,8 +9,7 @@ public class StartUI {
         System.out.println(item.getCreated().format(formatter));
         Tracker tracker = new Tracker();
         tracker.add(item);
-        tracker.findById(1);
-        System.out.println(item.getId() + " " + item.getName() + " " + item.getCreated());
-
+        Item res = tracker.findById(1);
+        System.out.println(res.getId() + " " + res.getName() + " " + res.getCreated());
     }
 }
