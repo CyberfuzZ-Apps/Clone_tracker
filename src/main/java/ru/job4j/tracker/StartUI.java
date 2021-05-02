@@ -11,5 +11,6 @@ public class StartUI {
         tracker.add(item);
         Item res = tracker.findById(1);
         System.out.println(res.getId() + " " + res.getName() + " " + res.getCreated());
+        System.out.println(item);
     }
 }
