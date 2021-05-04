@@ -1,4 +1,4 @@
-package ru.job4j.poly;
+package ru.job4j.casting;
 
 public class Train implements Vehicle {
     @Override
