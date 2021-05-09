@@ -3,8 +3,8 @@ package ru.job4j;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
 
-public class SingleTracker {
-    private static Tracker tracker;
+public final class SingleTracker {
+    private static Tracker tracker = null;
 
     private SingleTracker() {
 
@@ -18,26 +18,26 @@ public class SingleTracker {
     }
 
     public Item add(Item item) {
-        return tracker.add(item);
+        return getTracker().add(item);
     }
 
     public Item findById(int id) {
-        return tracker.findById(id);
+        return getTracker().findById(id);
     }
 
     public Item[] findAll() {
-        return tracker.findAll();
+        return getTracker().findAll();
     }
 
     public Item[] findByName(String key) {
-        return tracker.findByName(key);
+        return getTracker().findByName(key);
     }
 
     public boolean replace(int id, Item item) {
-        return tracker.replace(id, item);
+        return getTracker().replace(id, item);
     }
 
     public boolean delete(int id) {
-        return tracker.delete(id);
+        return getTracker().delete(id);
     }
 }
