@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import ru.job4j.SingleTracker;
-
 public class StartUI {
     private final Output out;
 
