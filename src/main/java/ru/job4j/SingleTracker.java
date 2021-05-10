@@ -4,16 +4,13 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
 
 public final class SingleTracker {
-    private static Tracker tracker;
+    private static Tracker tracker = new Tracker();
 
     private SingleTracker() {
 
     }
 
     public static Tracker getTracker() {
-        if (tracker == null) {
-            tracker = new Tracker();
-        }
         return tracker;
     }
 
