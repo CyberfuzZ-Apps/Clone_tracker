@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Hero
+abstract class GeneralHero
+class DecoratorHero
+class Wizard
+class Archer
+class Warrior
+class LightTeam
+class DarkTeam
+class Battle
+
+GeneralHero --|> Hero
+DecoratorHero --|> Hero
+DecoratorHero *-- Hero
+Wizard --|> DecoratorHero
+Archer --|> DecoratorHero
+Warrior --|> DecoratorHero
+DarkTeam o-- Wizard
+DarkTeam o-- Archer
+DarkTeam o-- Warrior
+LightTeam o-- Wizard
+LightTeam o-- Archer
+LightTeam o-- Warrior
+Battle *-- DarkTeam
+Battle *-- LightTeam
+
+
+@enduml
