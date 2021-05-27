@@ -1,7 +1,5 @@
 package ru.job4j.search;
 
-import org.hamcrest.Matcher;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -27,7 +25,6 @@ public class PhoneDictionaryTest {
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
         ArrayList<Person> persons = phones.find("Ivan");
-        int expected = 0;
-        Assert.assertEquals(expected, persons.size());
+        assertTrue(persons.isEmpty());
     }
 }
