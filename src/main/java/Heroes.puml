@@ -10,6 +10,10 @@ class Warrior
 class LightTeam
 class DarkTeam
 class Battle
+class Elf
+class Human
+class Orc
+class Undead
 
 GeneralHero --|> Hero
 DecoratorHero --|> Hero
@@ -17,12 +21,22 @@ DecoratorHero *-- Hero
 Wizard --|> DecoratorHero
 Archer --|> DecoratorHero
 Warrior --|> DecoratorHero
-DarkTeam o-- Wizard
-DarkTeam o-- Archer
-DarkTeam o-- Warrior
-LightTeam o-- Wizard
-LightTeam o-- Archer
-LightTeam o-- Warrior
+Elf o-- Wizard
+Elf o-- Archer
+Elf o-- Warrior
+Human o-- Wizard
+Human o-- Archer
+Human o-- Warrior
+Orc o-- Wizard
+Orc o-- Archer
+Orc o-- Warrior
+Undead o-- Wizard
+Undead o-- Archer
+Undead o-- Warrior
+LightTeam o-- Elf
+LightTeam o-- Human
+DarkTeam o-- Orc
+DarkTeam o-- Undead
 Battle *-- DarkTeam
 Battle *-- LightTeam
 
