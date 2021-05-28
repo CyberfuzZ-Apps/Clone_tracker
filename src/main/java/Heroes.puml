@@ -40,5 +40,4 @@ DarkTeam o-- Undead
 Battle *-- DarkTeam
 Battle *-- LightTeam
 
-
 @enduml
