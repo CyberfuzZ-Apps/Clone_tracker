@@ -1,6 +1,12 @@
 # Compiled class file
 *.class
 
+# Picture files
+*.png
+
+# Plunt UML files
+*.puml
+
 # Log file
 *.log
 
