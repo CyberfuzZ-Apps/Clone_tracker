@@ -27,4 +27,17 @@ public class OrderConvertTest {
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.get("45rtg"), is(new Order("45rtg", "Name")));
     }
+
+    @Test
+    public void whenDuplicate() {
+        List<Order> orders = new ArrayList<>();
+        orders.add(new Order("3sfe", "Dress"));
+        orders.add(new Order("45rtg", "Name"));
+        orders.add(new Order("3sfe", "Dress"));
+        orders.add(new Order("34ert", "Phone"));
+        orders.add(new Order("3sfe", "Dress"));
+        HashMap<String, Order> map = OrderConvert.process(orders);
+        int expectedMapSize = 3;
+        assertEquals(expectedMapSize, map.size());
+    }
 }
