@@ -19,6 +19,36 @@ public class StringCompareTest {
     }
 
     @Test
+    public void whenStringsAreZeroLengthThenZero() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "",
+                ""
+        );
+        assertThat(rst, is(0));
+    }
+
+    @Test
+    public void whenOnlyLeftLengthZeroThenNegative() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "",
+                "Petrov"
+        );
+        assertThat(rst, lessThan(0));
+    }
+
+    @Test
+    public void whenOnlyRightLengthZeroThenPositive() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Ivanov",
+                ""
+        );
+        assertThat(rst, greaterThan(0));
+    }
+
+    @Test
     public void whenLeftLessThanRightResultShouldBeNegative() {
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
