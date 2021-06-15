@@ -14,13 +14,16 @@ public class ProfilesTest {
         List<Profile> profileList = List.of(
                 new Profile(new Address("Moscow", "Lubyanka", 4, 12)),
                 new Profile(new Address("Kostroma", "Lenina", 45, 3)),
-                new Profile(new Address("Bryansk", "Sovetskaya", 32, 5)));
+                new Profile(new Address("Bryansk", "Sovetskaya", 32, 5)),
+                new Profile(new Address("Moscow", "Lubyanka", 4, 12)),
+                new Profile(new Address("Bryansk", "Sovetskaya", 32, 5))
+                );
         Profiles profiles = new Profiles();
         List<Address> rsl = profiles.collect(profileList);
         List<Address> expected = List.of(
-                new Address("Moscow", "Lubyanka", 4, 12),
+                new Address("Bryansk", "Sovetskaya", 32, 5),
                 new Address("Kostroma", "Lenina", 45, 3),
-                new Address("Bryansk", "Sovetskaya", 32, 5)
+                new Address("Moscow", "Lubyanka", 4, 12)
         );
         assertThat(rsl, is(expected));
     }
