@@ -2,7 +2,7 @@ package ru.job4j.stream;
 
 import java.util.Objects;
 
-public class Pupil {
+public class PupilBuilder {
     private String name;
     private String surname;
     private String middleName;
@@ -19,14 +19,14 @@ public class Pupil {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Pupil pupil = (Pupil) o;
-        return age == pupil.age
-                && score == pupil.score
-                && classLeader == pupil.classLeader
-                && Objects.equals(name, pupil.name)
-                && Objects.equals(surname, pupil.surname)
-                && Objects.equals(middleName, pupil.middleName)
-                && Objects.equals(gender, pupil.gender);
+        PupilBuilder pupilBuilder = (PupilBuilder) o;
+        return age == pupilBuilder.age
+                && score == pupilBuilder.score
+                && classLeader == pupilBuilder.classLeader
+                && Objects.equals(name, pupilBuilder.name)
+                && Objects.equals(surname, pupilBuilder.surname)
+                && Objects.equals(middleName, pupilBuilder.middleName)
+                && Objects.equals(gender, pupilBuilder.gender);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Pupil {
 
     @Override
     public String toString() {
-        return "Pupil{"
+        return "PupilBuilder{"
                 + "name='" + name + '\''
                 + ", surname='" + surname + '\''
                 + ", middleName='" + middleName + '\''
@@ -91,25 +91,25 @@ public class Pupil {
             return this;
         }
 
-        Pupil build() {
-            Pupil pupil = new Pupil();
-            pupil.name = name;
-            pupil.surname = surname;
-            pupil.middleName = middleName;
-            pupil.gender = gender;
-            pupil.age = age;
-            pupil.score = score;
-            pupil.classLeader = classLeader;
-            return pupil;
+        PupilBuilder build() {
+            PupilBuilder pupilBuilder = new PupilBuilder();
+            pupilBuilder.name = name;
+            pupilBuilder.surname = surname;
+            pupilBuilder.middleName = middleName;
+            pupilBuilder.gender = gender;
+            pupilBuilder.age = age;
+            pupilBuilder.score = score;
+            pupilBuilder.classLeader = classLeader;
+            return pupilBuilder;
         }
     }
 
     public static void main(String[] args) {
-        Pupil pupil = new Pupil.Builder()
+        PupilBuilder pupilBuilder = new PupilBuilder.Builder()
                 .buildName("Evgeniy")
                 .buildAge((byte) 10)
                 .buildScore(90)
                 .build();
-        System.out.println(pupil);
+        System.out.println(pupilBuilder);
     }
 }
