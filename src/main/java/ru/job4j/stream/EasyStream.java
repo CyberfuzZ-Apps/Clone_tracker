@@ -18,31 +18,29 @@ collect - собирает все элементы из source по заданн
 public class EasyStream {
     private List<Integer> list;
 
-    public EasyStream(List<Integer> list) {
+    private EasyStream(List<Integer> list) {
         this.list = list;
     }
 
     public static EasyStream of(List<Integer> source) {
-        if (!source.isEmpty()) {
-            List<Integer> rslList = new ArrayList<>(source);
-            return new EasyStream(rslList);
-        }
-        return new EasyStream(List.of());
+        return new EasyStream(source);
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
-        for (int i = 0; i < list.size(); i++) {
-            list.set(i, fun.apply(list.get(i)));
+        List<Integer> rslList = new ArrayList<>(list);
+        for (int i = 0; i < rslList.size(); i++) {
+            rslList.set(i, fun.apply(rslList.get(i)));
         }
-        return this;
+        return new EasyStream(rslList);
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
-        list.removeIf(num -> !fun.test(num));
-        return this;
+        List<Integer> rslList = new ArrayList<>(list);
+        rslList.removeIf(num -> !fun.test(num));
+        return new EasyStream(rslList);
     }
 
     public List<Integer> collect() {
-        return list;
+        return List.copyOf(list);
     }
 }
