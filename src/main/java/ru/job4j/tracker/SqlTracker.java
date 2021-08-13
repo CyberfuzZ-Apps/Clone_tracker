@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +8,13 @@ import java.util.Properties;
 
 public class SqlTracker implements Store {
     private Connection cn;
+
+    public SqlTracker() {
+    }
+
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
 
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader()
@@ -29,17 +34,12 @@ public class SqlTracker implements Store {
     }
 
     private void createTable() {
-        try (BufferedReader reader = new BufferedReader(
-                new FileReader("./db/update_001.sql"));
-             Statement st = cn.createStatement()) {
-            StringBuilder sb = new StringBuilder();
-            String str = reader.readLine();
-            while (str != null) {
-                sb.append(str);
-                sb.append(System.lineSeparator());
-                str = reader.readLine();
-            }
-            st.execute(sb.toString());
+        try (Statement st = cn.createStatement()) {
+            st.execute("create table if not exists items (\n"
+                    + "    id serial primary key,\n"
+                    + "    name text,\n"
+                    + "    created timestamp\n"
+                    + ");");
         } catch (Exception e) {
             e.printStackTrace();
         }
