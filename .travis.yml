@@ -6,6 +6,9 @@ jdk:
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
+services:
+  - postgresql
+
 before_install:
   - psql -c 'create database tracker;' -U postgres
 
