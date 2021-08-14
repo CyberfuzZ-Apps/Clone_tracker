@@ -30,19 +30,6 @@ public class SqlTracker implements Store {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
-        createTable();
-    }
-
-    private void createTable() {
-        try (Statement st = cn.createStatement()) {
-            st.execute("create table if not exists items (\n"
-                    + "    id serial primary key,\n"
-                    + "    name text,\n"
-                    + "    created timestamp\n"
-                    + ");");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
