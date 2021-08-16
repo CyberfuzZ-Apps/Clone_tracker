@@ -73,7 +73,7 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
-        tracker.delete(item.getId() + 1);
+        tracker.delete(-1);
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
@@ -91,7 +91,7 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
-        tracker.replace(item.getId() + 1, new Item("replaced"));
+        tracker.replace(-1, new Item("replaced"));
         assertThat(tracker.findById(item.getId()).getName(), is("item"));
     }
 
