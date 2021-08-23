@@ -42,7 +42,7 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         try (PreparedStatement pStatement = cn.prepareStatement(
-                "insert into items(name, created) values (?, ?)",
+                "INSERT INTO items(name, created) VALUES (?, ?)",
                 Statement.RETURN_GENERATED_KEYS)) {
             pStatement.setString(1, item.getName());
             pStatement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
@@ -62,7 +62,7 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         boolean result = false;
         try (PreparedStatement pStatement = cn.prepareStatement(
-                "update items set name = ?, created = ? where id = ?")) {
+                "UPDATE items SET name = ?, created = ? WHERE id = ?")) {
             pStatement.setString(1, item.getName());
             pStatement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             pStatement.setInt(3, id);
@@ -77,7 +77,7 @@ public class SqlTracker implements Store {
     public boolean delete(int id) {
         boolean result = false;
         try (PreparedStatement pStatement = cn.prepareStatement(
-                "delete from items where id = ?")) {
+                "DELETE FROM items WHERE id = ?")) {
             pStatement.setInt(1, id);
             result = pStatement.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -90,7 +90,7 @@ public class SqlTracker implements Store {
     public List<Item> findAll() {
         List<Item> items = new ArrayList<>();
         try (PreparedStatement pStatement = cn.prepareStatement(
-                "select * from items")) {
+                "SELECT * FROM items")) {
             try (ResultSet resultSet = pStatement.executeQuery()) {
                 while (resultSet.next()) {
                     items.add(new Item(
@@ -110,7 +110,7 @@ public class SqlTracker implements Store {
     public List<Item> findByName(String key) {
         List<Item> items = new ArrayList<>();
         try (PreparedStatement pStatement = cn.prepareStatement(
-                "select * from items where name = ?")) {
+                "SELECT * FROM items WHERE name = ?")) {
             pStatement.setString(1, key);
             try (ResultSet resultSet = pStatement.executeQuery()) {
                 while (resultSet.next()) {
@@ -131,7 +131,7 @@ public class SqlTracker implements Store {
     public Item findById(int id) {
         Item item = null;
         try (PreparedStatement pStatement = cn.prepareStatement(
-                "select * from items where id = ?")) {
+                "SELECT * FROM items WHERE id = ?")) {
             pStatement.setInt(1, id);
             try (ResultSet resultSet = pStatement.executeQuery()) {
                 if (resultSet.next()) {
