@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -16,6 +17,8 @@ public class Item implements Comparable<Item> {
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
+    private String description;
+    private Timestamp createdTimestamp;
 
     public Item() {
     }
@@ -33,6 +36,15 @@ public class Item implements Comparable<Item> {
         this.id = id;
         this.name = name;
         this.created = created;
+    }
+
+    public Item(int id, String name, LocalDateTime created,
+                String description, Timestamp createdTimestamp) {
+        this.id = id;
+        this.name = name;
+        this.created = created;
+        this.description = description;
+        this.createdTimestamp = createdTimestamp;
     }
 
     public int getId() {
