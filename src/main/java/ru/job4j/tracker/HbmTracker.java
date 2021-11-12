@@ -97,20 +97,4 @@ public class HbmTracker implements Store, AutoCloseable {
         StandardServiceRegistryBuilder.destroy(registry);
     }
 
-    public static void main(String[] args) throws Exception {
-        /* At first - Truncate table and restart identity */
-        Item item1 = new Item("Item 1");
-        Item item2 = new Item("Item 2");
-        Store tracker = new HbmTracker();
-        tracker.add(item1);
-        tracker.add(item2);
-        System.out.println("FIND ALL = " + tracker.findAll());
-        System.out.println("REPLACE = " + tracker.replace(1, new Item("Replaced")));
-        System.out.println("FIND ALL = " + tracker.findAll());
-        System.out.println("FIND BY ID 1 = " + tracker.findById(1));
-        System.out.println("FIND BY NAME - Replaced = " + tracker.findByName("Replaced"));
-        System.out.println("DELETE id 1 = " + tracker.delete(1));
-        System.out.println("FIND ALL (without id 1) = " + tracker.findAll());
-        tracker.close();
-    }
 }
