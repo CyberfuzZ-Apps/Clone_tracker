@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import ru.job4j.tracker.react.Observe;
+
 import java.util.List;
 
 public class ShowAllAction implements UserAction {
@@ -17,14 +19,7 @@ public class ShowAllAction implements UserAction {
     @Override
     public boolean execute(Input input, Store tracker) {
         out.println("=== Show all items ===");
-        List<Item> items = tracker.findAll();
-        if (!items.isEmpty()) {
-            for (Item item : items) {
-                out.println(item);
-            }
-        } else {
-            out.println("Хранилище еще не содержит заявок");
-        }
+        tracker.findAllByReact(out::println);
         return true;
     }
 }
